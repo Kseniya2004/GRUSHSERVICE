@@ -1,0 +1,50 @@
+﻿<Window x:Class="GRUSHSERVICE.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GRUSHSERVICE"
+        mc:Ignorable="d"
+        Title="{Binding ElementName=frmMain, Path=Content.Title}"
+        Height="450" Width="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".3*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" 
+            HorizontalAlignment="Center" VerticalAlignment="Top">
+            <TextBlock 
+                    Name="TxbFIO"
+                    Text="Выполнила: Немтырёва К.А." 
+                    TextAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1"
+            HorizontalAlignment="center" VerticalAlignment="Center">
+            <Image Source="/Resources/logo.png"></Image>
+            <StackPanel Margin="50 0 0 0" Orientation="Horizontal"
+            HorizontalAlignment="center" VerticalAlignment="Center">
+                <Button Width="100" Height="30" Content="Авторизация" />               
+                <TextBlock 
+                    Name="TxbNAME"
+                    Text='Автосервис "GRUSHSERVICE"'                      
+                    Margin="10"
+                    TextAlignment="Center"/>
+                <Button Content="Назад"
+                        Name="BtnBack"
+                        Width="70"
+                        Height="30"
+                        Click="BtnBack_Click"/>
+            </StackPanel>
+        </StackPanel>
+        
+
+
+        <Frame Grid.Row="2" 
+               Name="frmMain"
+               NavigationUIVisibility="Hidden" ContentRendered="frmMain_ContentRendered">
+        </Frame>
+    </Grid>
+</Window>
