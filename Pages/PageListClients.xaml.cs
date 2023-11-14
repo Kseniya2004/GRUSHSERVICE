@@ -13,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using GRUSHSERVICE.Classes;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 
 namespace GRUSHSERVICE.Pages
@@ -26,8 +25,7 @@ namespace GRUSHSERVICE.Pages
         public PageListClients()
         {
             InitializeComponent();
-            var curentServ = GRUSHSERVICE_db_Entities.GetContext().Sevices.ToList();
-            LViewServ.ItemsSource = curentServ;
+            LViewServ.ItemsSource = GRUSHSERVICE_db_Entities.GetContext().Sevices.ToList();
         }
 
         private void BtnEditServ_Click(object sender, RoutedEventArgs e)
@@ -72,8 +70,69 @@ namespace GRUSHSERVICE.Pages
 
         private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            LViewServ.ItemsSource = GRUSHSERVICE_db_Entities.GetContext().Sevices.Where(x =>
-            x.title.ToLower().Contains(TxbSearch.Text.ToLower())).ToList();
+            string search = TxbSearch.Text.ToLower();
+            if (TxbSearch.Text != null)
+                LViewServ.ItemsSource = GRUSHSERVICE_db_Entities.GetContext().Sevices.
+                    Where(x => x.title.Contains(search)).ToList();
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            LViewServ.ItemsSource = GRUSHSERVICE_db_Entities.GetContext().Sevices.ToList();
+        }
+        /// <summary>
+        /// сортировка по возрастанию стоимости
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RbUp_Checked(object sender, RoutedEventArgs e)
+        {
+            LViewServ.ItemsSource = GRUSHSERVICE_db_Entities.GetContext().Sevices.
+               OrderBy(x => x.price).ToList();
+        }
+        /// <summary>
+        /// сортировка по убыванию стоимости
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RbDown_Checked(object sender, RoutedEventArgs e)
+        {
+            LViewServ.ItemsSource = GRUSHSERVICE_db_Entities.GetContext().Sevices.
+                OrderByDescending(x => x.price).ToList();
+        }
+
+        private void CmbFiltr_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(CmbFiltr.SelectedIndex == 0)
+            {
+                LViewServ.ItemsSource = GRUSHSERVICE_db_Entities.GetContext().Sevices.
+                    Where(x => x.discount >= 0 && x.discount < 5).ToList();
+            }
+            else if(CmbFiltr.SelectedIndex == 1)
+            {
+                LViewServ.ItemsSource = GRUSHSERVICE_db_Entities.GetContext().Sevices.
+                    Where(x => x.discount >= 5 && x.discount < 15).ToList();
+            }
+            else if (CmbFiltr.SelectedIndex == 2)
+            {
+                LViewServ.ItemsSource = GRUSHSERVICE_db_Entities.GetContext().Sevices.
+                    Where(x => x.discount >= 15 && x.discount < 30).ToList();
+            }
+            else if (CmbFiltr.SelectedIndex == 3)
+            {
+                LViewServ.ItemsSource = GRUSHSERVICE_db_Entities.GetContext().Sevices.
+                    Where(x => x.discount >= 30 && x.discount < 70).ToList();
+            }
+            else 
+            {
+                LViewServ.ItemsSource = GRUSHSERVICE_db_Entities.GetContext().Sevices.
+                    Where(x => x.discount >= 70 && x.discount < 100).ToList();
+            }
+        }
+
+        private void BtnListOrder_Click(object sender, RoutedEventArgs e)
+        {
+            ClassFrame.frame.Navigate(new PageListOrder());
         }
     }
 }

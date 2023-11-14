@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -42,6 +43,11 @@ namespace GRUSHSERVICE
             frmMain.GoBack();
         }
 
-        
+        private void btnAutor_Click(object sender, RoutedEventArgs e)
+        {
+            WindowAuthorization windowAuthorization = new WindowAuthorization();
+            windowAuthorization.Show();
+            Hide();
+        }
     }
 }

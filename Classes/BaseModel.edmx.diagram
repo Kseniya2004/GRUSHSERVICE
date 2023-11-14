@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a1efcd593f7d4ec48cafb58c9849218b" Name="Diagram1">
-        <EntityTypeShape EntityType="GRUSHSERVICE_dbModel1.Clients" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="GRUSHSERVICE_dbModel1.Employee" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GRUSHSERVICE_dbModel1.Products" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="GRUSHSERVICE_dbModel1.Reports" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GRUSHSERVICE_dbModel1.Sevices" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="GRUSHSERVICE_dbModel1.sysdiagrams" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="GRUSHSERVICE_dbModel1.FK_Reports_Clients" ManuallyRouted="false" />
-        <AssociationConnector Association="GRUSHSERVICE_dbModel1.FK_Reports_Products" ManuallyRouted="false" />
-        <AssociationConnector Association="GRUSHSERVICE_dbModel1.FK_Reports_Sevices" ManuallyRouted="false" />
+      <Diagram DiagramId="7ed65cfe2ac946b9889a961713adfbf9" Name="Diagram1">
+        <EntityTypeShape EntityType="GRUSHSERVICE_dbModel.Clients" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="GRUSHSERVICE_dbModel.Employee" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GRUSHSERVICE_dbModel.Products" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GRUSHSERVICE_dbModel.Reports" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GRUSHSERVICE_dbModel.Sevices" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GRUSHSERVICE_dbModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="GRUSHSERVICE_dbModel.FK_Reports_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="GRUSHSERVICE_dbModel.FK_Reports_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="GRUSHSERVICE_dbModel.FK_Reports_Sevices" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

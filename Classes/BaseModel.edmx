@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище GRUSHSERVICE_dbModel1" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище GRUSHSERVICE_dbModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Clients">
           <Key>
             <PropertyRef Name="id" />
@@ -46,10 +46,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="clients" Type="int" />
-          <Property Name="services" Type="int" />
-          <Property Name="documents" Type="nvarchar(max)" />
-          <Property Name="product" Type="int" />
+          <Property Name="clientsRep" Type="int" />
+          <Property Name="servicesRep" Type="int" />
+          <Property Name="documentsRep" Type="nvarchar(max)" />
+          <Property Name="productRep" Type="int" />
           <Property Name="dateStart" Type="datetime" />
         </EntityType>
         <EntityType Name="Sevices">
@@ -81,7 +81,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Reports">
-              <PropertyRef Name="clients" />
+              <PropertyRef Name="clientsRep" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -93,7 +93,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Reports">
-              <PropertyRef Name="product" />
+              <PropertyRef Name="productRep" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -105,11 +105,11 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Reports">
-              <PropertyRef Name="services" />
+              <PropertyRef Name="servicesRep" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище GRUSHSERVICE_dbModel1Container">
+        <EntityContainer Name="Хранилище GRUSHSERVICE_dbModelContainer">
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
@@ -129,10 +129,11 @@
             <End Role="Reports" EntitySet="Reports" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="GRUSHSERVICE_dbModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="GRUSHSERVICE_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Clients">
           <Key>
             <PropertyRef Name="id" />
@@ -176,12 +177,12 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="clients" Type="Int32" />
-          <Property Name="services" Type="Int32" />
-          <Property Name="documents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="product" Type="Int32" />
+          <Property Name="clientsRep" Type="Int32" />
+          <Property Name="servicesRep" Type="Int32" />
+          <Property Name="documentsRep" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="productRep" Type="Int32" />
           <Property Name="dateStart" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Clients1" Relationship="Self.FK_Reports_Clients" FromRole="Reports" ToRole="Clients" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Reports_Clients" FromRole="Reports" ToRole="Clients" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Reports_Products" FromRole="Reports" ToRole="Products" />
           <NavigationProperty Name="Sevices" Relationship="Self.FK_Reports_Sevices" FromRole="Reports" ToRole="Sevices" />
         </EntityType>
@@ -193,7 +194,7 @@
           <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="price" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="price" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="discount" Type="Double" />
           <NavigationProperty Name="Reports" Relationship="Self.FK_Reports_Sevices" FromRole="Sevices" ToRole="Reports" />
         </EntityType>
@@ -215,7 +216,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Reports">
-              <PropertyRef Name="clients" />
+              <PropertyRef Name="clientsRep" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -227,7 +228,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Reports">
-              <PropertyRef Name="product" />
+              <PropertyRef Name="productRep" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -239,7 +240,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Reports">
-              <PropertyRef Name="services" />
+              <PropertyRef Name="servicesRep" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -268,9 +269,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище GRUSHSERVICE_dbModel1Container" CdmEntityContainer="GRUSHSERVICE_db_Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище GRUSHSERVICE_dbModelContainer" CdmEntityContainer="GRUSHSERVICE_db_Entities">
           <EntitySetMapping Name="Clients">
-            <EntityTypeMapping TypeName="GRUSHSERVICE_dbModel1.Clients">
+            <EntityTypeMapping TypeName="GRUSHSERVICE_dbModel.Clients">
               <MappingFragment StoreEntitySet="Clients">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="surname" ColumnName="surname" />
@@ -285,7 +286,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employee">
-            <EntityTypeMapping TypeName="GRUSHSERVICE_dbModel1.Employee">
+            <EntityTypeMapping TypeName="GRUSHSERVICE_dbModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -298,7 +299,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="GRUSHSERVICE_dbModel1.Products">
+            <EntityTypeMapping TypeName="GRUSHSERVICE_dbModel.Products">
               <MappingFragment StoreEntitySet="Products">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="titlePr" ColumnName="titlePr" />
@@ -309,19 +310,19 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Reports">
-            <EntityTypeMapping TypeName="GRUSHSERVICE_dbModel1.Reports">
+            <EntityTypeMapping TypeName="GRUSHSERVICE_dbModel.Reports">
               <MappingFragment StoreEntitySet="Reports">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="clients" ColumnName="clients" />
-                <ScalarProperty Name="services" ColumnName="services" />
-                <ScalarProperty Name="documents" ColumnName="documents" />
-                <ScalarProperty Name="product" ColumnName="product" />
+                <ScalarProperty Name="clientsRep" ColumnName="clientsRep" />
+                <ScalarProperty Name="servicesRep" ColumnName="servicesRep" />
+                <ScalarProperty Name="documentsRep" ColumnName="documentsRep" />
+                <ScalarProperty Name="productRep" ColumnName="productRep" />
                 <ScalarProperty Name="dateStart" ColumnName="dateStart" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sevices">
-            <EntityTypeMapping TypeName="GRUSHSERVICE_dbModel1.Sevices">
+            <EntityTypeMapping TypeName="GRUSHSERVICE_dbModel.Sevices">
               <MappingFragment StoreEntitySet="Sevices">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -333,7 +334,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="GRUSHSERVICE_dbModel1.sysdiagrams">
+            <EntityTypeMapping TypeName="GRUSHSERVICE_dbModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />

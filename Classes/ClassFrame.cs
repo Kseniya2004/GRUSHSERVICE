@@ -10,7 +10,6 @@ namespace GRUSHSERVICE.Classes
 {
     internal class ClassFrame
     {
-        public static Frame frame;
-        public static GRUSHSERVICE_db_Entities db = new GRUSHSERVICE_db_Entities();
+        public static Frame frame;        
     }
 }
